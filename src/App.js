@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react';
+import MyComponent from './MyComponent';
+// import React, { Component } from 'react'
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 /* App 이라는 컴포넌트를 만들어 준다.
    함수에서 반환하는 내용은 HTML이 아니라 JSX이다.
@@ -19,11 +21,19 @@ import './App.css';
 //   );
 // }
 
-class App extends Component {
-  render() {
-    const name = 'react';
-    return <div className="react">{name}</div>;
-  }
-}
+// class App extends Component {
+//   render() {
+//     const name = 'react';
+//     return <div className="react">{name}</div>;
+//   }
+// }
+
+const App = () => {
+  return (
+  <MyComponent name="React" favoriteNumber={7}>
+    리액트
+    </MyComponent>
+  );
+};
 
 export default App;
