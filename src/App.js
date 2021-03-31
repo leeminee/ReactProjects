@@ -1,5 +1,6 @@
 import React from 'react';
-import MyComponent from './MyComponent';
+import Counter from './Counter';
+// import MyComponent from './MyComponent';
 // import React, { Component } from 'react'
 // import logo from './logo.svg';
 // import './App.css';
@@ -29,11 +30,7 @@ import MyComponent from './MyComponent';
 // }
 
 const App = () => {
-  return (
-  <MyComponent name="React" favoriteNumber={7}>
-    리액트
-    </MyComponent>
-  );
+  return <Counter/>;
 };
 
 export default App;
