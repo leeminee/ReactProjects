@@ -1,5 +1,6 @@
 import React from 'react';
-import Counter from './Counter';
+// import Counter from './Counter';
+import Say from './Say';
 // import MyComponent from './MyComponent';
 // import React, { Component } from 'react'
 // import logo from './logo.svg';
@@ -30,7 +31,7 @@ import Counter from './Counter';
 // }
 
 const App = () => {
-  return <Counter/>;
+  return <Say/>;
 };
 
 export default App;
