@@ -1,6 +1,7 @@
 import React from 'react';
+import EventPractice from './EventPractice'
 // import Counter from './Counter';
-import Say from './Say';
+// import Say from './Say';
 // import MyComponent from './MyComponent';
 // import React, { Component } from 'react'
 // import logo from './logo.svg';
@@ -31,7 +32,7 @@ import Say from './Say';
 // }
 
 const App = () => {
-  return <Say/>;
+  return <EventPractice/>;
 };
 
 export default App;
