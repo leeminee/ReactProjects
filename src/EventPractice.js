@@ -6,18 +6,18 @@ const EventPractice = () => {
         message:''
     });
     const [username, message] = form;
-    // const [message, setMessage] = useState('');
-    // const onChangeUsername = e => setUsername(e.target.value);
-    // const onChangeMessage = e => setMessage(e.target.value);
-    const onChange = e => {
+    const onChange = e => { // Form 요소에서 값이 변하면 발생하는 이벤트
         const nextForm = {
-            
+            ...form,
+            [e.target.name]: e.target.value // 원하는 값을 덮어씌우기
         }
     }
     const onClick = () => {
         alert(username+' : '+message);
-        setUsername('');
-        setMessage('');
+        setForm({
+            username:'',
+            message:''
+        });
     };
     const onKeyPress = e => {
         if(e.key === 'Enter') {
@@ -32,14 +32,14 @@ const EventPractice = () => {
             name='username'
             placeholder='사용자명'
             value={username}
-            onChange={onChangeUsername}
+            onChange={onChange}
             />
             <input
             type='text'
             name='message'
             placeholder='아무거나 입력해 보세요'
             value={message}
-            onChange={onChangeMessage}
+            onChange={onChange}
             onKeyPress={onKeyPress}
             />
             <button onClick={onClick}>확인</button>
