@@ -5,13 +5,14 @@ const EventPractice = () => {
         username:'',
         message:''
     });
-    const [username, message] = form;
+    const {username, message} = form;
     const onChange = e => { // Form 요소에서 값이 변하면 발생하는 이벤트
         const nextForm = {
             ...form,
             [e.target.name]: e.target.value // 원하는 값을 덮어씌우기
-        }
-    }
+        };
+        setForm(nextForm);
+    };
     const onClick = () => {
         alert(username+' : '+message);
         setForm({
@@ -45,7 +46,7 @@ const EventPractice = () => {
             <button onClick={onClick}>확인</button>
         </div>
     );
-}
+};
 
 // class EventPractice extends Component {
 //     state = {

@@ -1,5 +1,6 @@
 import React from 'react';
-import EventPractice from './EventPractice'
+import VaildationSample from './VaildationSample'
+// import EventPractice from './EventPractice'
 // import Counter from './Counter';
 // import Say from './Say';
 // import MyComponent from './MyComponent';
@@ -32,7 +33,7 @@ import EventPractice from './EventPractice'
 // }
 
 const App = () => {
-  return <EventPractice/>;
+  return <VaildationSample/>;
 };
 
 export default App;
