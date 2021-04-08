@@ -1,14 +1,7 @@
-import React from 'react';
-import IterationSample from './IterationSample'
-// import ScrollBox from './ScrollBox'
-// import VaildationSample from './VaildationSample'
-// import EventPractice from './EventPractice'
-// import Counter from './Counter';
-// import Say from './Say';
-// import MyComponent from './MyComponent';
-// import React, { Component } from 'react'
-// import logo from './logo.svg';
-// import './App.css';
+// import { render } from '@testing-library/react';
+import React, {Component} from 'react';
+import LifeCycleSample from './LifeCycleSample'
+import ErrorBoundary from './ErrorBoundary'
 
 /* App 이라는 컴포넌트를 만들어 준다.
    함수에서 반환하는 내용은 HTML이 아니라 JSX이다.
@@ -40,8 +33,31 @@ import IterationSample from './IterationSample'
 //   }
 // }
 
-const App = () => {
-  return <IterationSample/>;
+function getRandomColor() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+class App extends Component {
+  state = {
+    color: '#000000'
+  }
+
+  handleClick = () => {
+    this.setState({
+      color:getRandomColor()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>랜덤색상</button>
+        <ErrorBoundary>
+        <LifeCycleSample color={this.state.color}/>
+        </ErrorBoundary>
+      </div>
+    );
+  }
 };
 
 export default App;
