@@ -1,5 +1,6 @@
-import React from 'react';
-import VaildationSample from './VaildationSample'
+import React, {Component} from 'react';
+import ScrollBox from './ScrollBox'
+// import VaildationSample from './VaildationSample'
 // import EventPractice from './EventPractice'
 // import Counter from './Counter';
 // import Say from './Say';
@@ -25,15 +26,21 @@ import VaildationSample from './VaildationSample'
 //   );
 // }
 
-// class App extends Component {
-//   render() {
-//     const name = 'react';
-//     return <div className="react">{name}</div>;
-//   }
-// }
+class App extends Component {
+  render() {
+    return (
+    <div>
+      <ScrollBox ref={(ref) => this.ScrollBox=ref}/>
+      <button onClick={() => this.ScrollBox.ScrollToBottom()}>
+        맨 밑으로
+      </button>]
+    </div>
+    );
+  }
+}
 
-const App = () => {
-  return <VaildationSample/>;
-};
+// const App = () => {
+//   return <VaildationSample/>;
+// };
 
 export default App;

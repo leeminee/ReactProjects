@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 
 class ScrollBox extends Component {
+
+    ScrollToBottom = () => {
+        const {scrollHeight, clientHeight} = this.box;
+        this.box.scrollTop = scrollHeight - clientHeight;
+    }
+    
     render() {
         const style = {
             border: '1px solid black',
@@ -16,7 +22,7 @@ class ScrollBox extends Component {
             background: 'linear-gradient(white, black)'
         }
 
-        retrun (
+        return (
             <div
                 style={style}
                 ref={(ref) => {this.box=ref}}>
