@@ -1,7 +1,5 @@
-// import { render } from '@testing-library/react';
-import React, {Component} from 'react';
-import LifeCycleSample from './LifeCycleSample'
-import ErrorBoundary from './ErrorBoundary'
+import React from 'react';
+import Average from './Average';
 
 /* App 이라는 컴포넌트를 만들어 준다.
    함수에서 반환하는 내용은 HTML이 아니라 JSX이다.
@@ -20,44 +18,35 @@ import ErrorBoundary from './ErrorBoundary'
 //   );
 // }
 
-// class App extends Component {
-//   render() {
-//     return (
-//     <div>
-//       <ScrollBox ref={(ref) => this.ScrollBox=ref}/>
-//       <button onClick={() => this.ScrollBox.ScrollToBottom()}>
-//         맨 밑으로
-//       </button>]
-//     </div>
-//     );
-//   }
+// function getRandomColor() {
+//   return '#' + Math.floor(Math.random() * 16777215).toString(16);
 // }
 
-function getRandomColor() {
-  return '#' + Math.floor(Math.random() * 16777215).toString(16);
-}
+// class App extends Component {
+//   state = {
+//     color: '#000000'
+//   }
 
-class App extends Component {
-  state = {
-    color: '#000000'
-  }
+//   handleClick = () => {
+//     this.setState({
+//       color:getRandomColor()
+//     });
+//   }
 
-  handleClick = () => {
-    this.setState({
-      color:getRandomColor()
-    });
-  }
+//   render() {
+//     return (
+//       <div>
+//         <button onClick={this.handleClick}>랜덤색상</button>
+//         <ErrorBoundary>
+//         <LifeCycleSample color={this.state.color}/>
+//         </ErrorBoundary>
+//       </div>
+//     );
+//   }
+// };
 
-  render() {
-    return (
-      <div>
-        <button onClick={this.handleClick}>랜덤색상</button>
-        <ErrorBoundary>
-        <LifeCycleSample color={this.state.color}/>
-        </ErrorBoundary>
-      </div>
-    );
-  }
+const App = () => {
+  return <Average/>
 };
 
 export default App;

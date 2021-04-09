@@ -1,39 +1,40 @@
-import React, {Component} from 'react';
+import React, {useReducer} from 'react';
+/** Hook 의 종류
+ *  - useState
+ *  - useReducer
+ *  - useMemo
+ *  - useCallback
+ *  - useRef
+ *  - useInput
+ */
 
-class Counter extends Component {
-        // state의 초깃값 설정
-        state = {
-            number: 0,
-            fixedNumber: 0
-        };
-    render() {
-        const {number, fixedNumber} = this.state; // state를 조회할 때는 this.state로 조회한다.
-        return (
+function reducer(state, action) {
 
-            <div>
-                <h1>{number}</h1>
-                <h2>바뀌지 않는 값: {fixedNumber}</h2>
-                <button
-                    // onClick을 통해 버튼이 클릭되었을 때 호출할 함수를 지정
-                    onClick={() => {
-                        //this.setState를 사용하여 state에 새로운 값을 넣을 수 있다.
-                        this.setState(
-                            {
-                                number: number +1
-                            },
-                            () => {
-                                console.log('방금 setState가 호출되었습니다.');
-                                console.log(this.state);
-                            }
-                        );
-                    }}
-                >
-                    +1
-                </button>
-            </div>
-        );
+    //action.type에 따라 다른 작업 수행
+    switch(action.type) {
+        case 'INCREMENT':
+            return {value: state.value +1};
+            case 'DECREMENT':
+                return {value: state.value -1}
+                default:
+                    //아무것도 해당되지 않을 떄 기존 상태 변환
+                    return state;
     }
 }
+
+const Counter = () => {
+    const [state, dispatch] = useReducer(reducer, {value:0});
+
+    return (
+        <div>
+            <p>
+                현재 카운터 값은 <b>{state.value}</b>입니다.
+            </p>
+            <button onClick={() => dispatch({type:'INCREMENT'})}>+1</button>
+            <button onClick={() => dispatch({type:'DECREMENT'})}>-1</button>
+        </div>
+    );
+};
 
 
 export default Counter;
