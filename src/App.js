@@ -1,5 +1,7 @@
-import React,{useState, useEffect} from 'react';
-import customAxios from './customAxios';
+// import React,{useState, useEffect} from 'react';
+import React from 'react';
+// import customAxios from './customAxios';
+import Average from './Average';
 
 /* App 이라는 컴포넌트를 만들어 준다.
    함수에서 반환하는 내용은 HTML이 아니라 JSX이다.
@@ -45,34 +47,34 @@ import customAxios from './customAxios';
 //   }
 // };
 
-// const App = () => {
-//   return <Average/>
-// };
+const App = () => {
+  return <Average/>
+};
 
-function App() {
-  // IP 주소 변수 선언
-  const [ip, setIp] = useState('');
+// function App() {
+//   // IP 주소 변수 선언
+//   const [ip, setIp] = useState('');
 
-  // IP 주소값을 설정
-  function callback(data) {
-    setIp(data);
-  }
+//   // IP 주소값을 설정
+//   function callback(data) {
+//     setIp(data);
+//   }
 
-  // 첫번째 렌더링을 다 마친 후 실행
-  useEffect(
-    () => {
-      // 클라이언트의 IP 주소를 알아내는 백엔드의 함수를 호출
-      customAxios('/ip', callback);
-    },[]
-  );
+//   // 첫번째 렌더링을 다 마친 후 실행
+//   useEffect(
+//     () => {
+//       // 클라이언트의 IP 주소를 알아내는 백엔드의 함수를 호출
+//       customAxios('/ip', callback);
+//     },[]
+//   );
 
-  return (
-    <div className="APP">
-      <header className="App-header">
-        이 기기의 IP 주소는 {ip} 입니다.
-      </header>
-    </div>
-  );
-}
+//   return (
+//     <div className="APP">
+//       <header className="App-header">
+//         이 기기의 IP 주소는 {ip} 입니다.
+//       </header>
+//     </div>
+//   );
+// }
 
 export default App;
