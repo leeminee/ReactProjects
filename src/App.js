@@ -1,7 +1,9 @@
 // import React,{useState, useEffect} from 'react';
-import React from 'react';
-// import customAxios from './customAxios';
-import Average from './Average';
+import React, { useState, useEffect, useCallback } from "react";
+import customAxios from "./auto/customAxios";
+import "./App.css";
+import axios from "axios";
+import TableList from "./auto/TableList";
 
 /* App 이라는 컴포넌트를 만들어 준다.
    함수에서 반환하는 내용은 HTML이 아니라 JSX이다.
@@ -47,34 +49,89 @@ import Average from './Average';
 //   }
 // };
 
-const App = () => {
-  return <Average/>
-};
+// const App = () => {
+//   return <Average />;
+// };
 
-// function App() {
-//   // IP 주소 변수 선언
-//   const [ip, setIp] = useState('');
+function App() {
+  // IP 주소 변수 선언
+  const [ip, setIp] = useState("");
+  const [alarm, setAlarm] = useState();
+  const [table, setTable] = useState([
+    {
+      id: 1,
+      service: "알람유형별",
+      tableName: "STAT_ALARM_CATEGORY",
+      checked: true,
+    },
+    {
+      id: 2,
+      service: "알람등급별",
+      tableName: "STAT_ALARM_SEVERITY",
+      checked: true,
+    },
+    {
+      id: 3,
+      service: "FAULT유형별",
+      tableName: "STAT_FAULT_CATEGORY",
+      checked: false,
+    },
+  ]);
 
-//   // IP 주소값을 설정
-//   function callback(data) {
-//     setIp(data);
-//   }
+  const getAlarmColumn = () => {
+    axios.get("http://localhost:28747/api/alarm").then((response) => {
+      setAlarm(response.data);
+    });
+  };
 
-//   // 첫번째 렌더링을 다 마친 후 실행
-//   useEffect(
-//     () => {
-//       // 클라이언트의 IP 주소를 알아내는 백엔드의 함수를 호출
-//       customAxios('/ip', callback);
-//     },[]
-//   );
+  // IP 주소값을 설정
+  function callback(data) {
+    setIp(data);
+  }
 
-//   return (
-//     <div className="APP">
-//       <header className="App-header">
-//         이 기기의 IP 주소는 {ip} 입니다.
-//       </header>
-//     </div>
-//   );
-// }
+  // 첫번째 렌더링을 다 마친 후 실행
+  useEffect(() => {
+    // 클라이언트의 IP 주소를 알아내는 백엔드의 함수를 호출
+    customAxios(callback);
+  }, []);
+
+  return (
+    <TableList>
+      <div>
+        <h1>통계 테이블 생성 {ip} </h1>
+        <div>
+          <table border="1">
+            <tbody>
+              <tr>
+                <td>TableName</td>
+                <td>Column</td>
+                <td>Type</td>
+                <td>where</td>
+                <td>group by</td>
+                <td>order by</td>
+              </tr>
+              <tr>
+                <td>Column</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+              </tr>
+              <tr>
+                <td>where</td>
+              </tr>
+              <tr>
+                <td>group by</td>
+              </tr>
+              <tr>
+                <td>order by</td>
+              </tr>
+            </tbody>
+          </table>
+          <button onClick={getAlarmColumn}>Alarm테이블 컬럼</button>
+        </div>
+      </div>
+    </TableList>
+  );
+}
 
 export default App;
